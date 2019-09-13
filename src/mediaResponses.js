@@ -2,15 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 const getParty = (request, response) => {
-  const file = path.resolve(__dirname, '../client/party.ms4');
+  const file = path.resolve(__dirname, '../client/party.mp4');
 
   fs.stat(file, (err, stats) => {
+    // error code
     if (err) {
       if (err.code === 'ENOENT') {
         response.writeHead(404);
       }
       return response.end(err);
     }
+
+    // range info
     let {
       range,
     } = request.headers;
@@ -19,6 +22,7 @@ const getParty = (request, response) => {
       range = 'bytes=0-';
     }
 
+    // positions
     const positions = range.replace(/bytes=/, '').split('-');
 
     let start = parseInt(positions[0], 10);
@@ -55,4 +59,5 @@ const getParty = (request, response) => {
     return stream;
   });
 };
+
 module.exports.getParty = getParty;
