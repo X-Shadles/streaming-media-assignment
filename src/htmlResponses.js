@@ -1,8 +1,9 @@
 const fs = require('fs');
 
-const index = fs.readFileSync(`${__dirname}/../client/client.html`);
 
-const getIndex = (request, response) => {
+const getIndex = (request, response, clientFile) => {
+  const index = fs.readFileSync(`${__dirname}/${clientFile}`);
+
   response.writeHead(200, { 'Content-Type': 'text/html' });
   response.write(index);
   response.end();

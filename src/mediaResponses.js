@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const getParty = (request, response) => {
-  const file = path.resolve(__dirname, '../client/party.mp4');
+// folerLink is like '../client/party.mp4' while video type is like 'video/mp4'
+const getVideo = (request, response, folderLink, videoType) => {
+  const file = path.resolve(__dirname, folderLink);
 
   fs.stat(file, (err, stats) => {
     // error code
@@ -40,7 +41,7 @@ const getParty = (request, response) => {
       'Content-Range': `bytes  ${start}-${end}/${total}`,
       'Accept-Ranges': 'bytes',
       'Content-Length': chunksize,
-      'Content-Type': 'video/mp4',
+      'Content-Type': videoType,
     });
 
     const stream = fs.createReadStream(file, {
@@ -60,4 +61,4 @@ const getParty = (request, response) => {
   });
 };
 
-module.exports.getParty = getParty;
+module.exports.getVideo = getVideo;
