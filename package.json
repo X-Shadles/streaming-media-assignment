@@ -1,0 +1,26 @@
+{
+  "name": "streaming-media-assignment",
+  "version": "1.0.0",
+  "description": "Straming Media hw",
+  "main": "index.js",
+  "scripts": {    
+	"start": "node ./src/server.js",
+	"pretest": "eslint ./src --fix",
+    "test": "echo \"Test Complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/X-Shadles/streaming-media-assignment.git"
+  },
+  "author": "Ethan Henson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/X-Shadles/streaming-media-assignment/issues"
+  },
+  "homepage": "https://github.com/X-Shadles/streaming-media-assignment#readme",
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
