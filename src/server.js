@@ -10,6 +10,9 @@ const onRequest = (request, response) => {
 
   switch (request.url) {
     case '/':
+      htmlHandler.getIndex(request, response);
+      break;
+    case '/party.mp4':
       mediaHandler.getParty(request, response);
       break;
     default:
